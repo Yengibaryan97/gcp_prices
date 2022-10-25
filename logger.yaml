@@ -1,0 +1,19 @@
+version: 1
+handlers:
+  file_handler:
+    class: logging.FileHandler
+    formatter: simple_formatter
+    filename: my_logs.log
+  console:
+    class: logging.StreamHandler
+    formatter: simple_formatter
+    level: INFO
+    stream: ext://sys.stdout
+loggers:
+  info_logger:
+    handlers: [console]
+    level: INFO
+formatters:
+  simple_formatter:
+    format: 'GCP %(asctime)s %(existence)s %(levelname)s %(message)s'
+    datefmt: '%d/%b/%Y:%X %z'
